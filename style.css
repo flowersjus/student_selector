@@ -1,0 +1,227 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* Left column - student list and results */
+.left-column {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Right column - controls */
+.right-column {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.class-selector {
+    padding: 15px;
+    background-color: #f0f8ff;
+    border: 1px solid #b0c4de;
+    border-radius: 4px;
+}
+
+.class-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.class-selector select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.group-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#selectRandomStudentElimination {
+    background-color: #007bff;
+}
+
+#selectRandomStudentElimination:hover {
+    background-color: #0056b3;
+}
+
+#resetEliminationList, #resetGroups {
+    background-color: #dc3545;
+}
+
+#resetEliminationList:hover, #resetGroups:hover {
+    background-color: #bd2130;
+}
+
+/* Student list and results styling */
+.student-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+.student-list h3 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#currentStudents {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.student-item {
+    padding: 8px 12px;
+    background-color: #e9e9e9;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.student-item.boy {
+    background-color: #d1ecf1;
+    border-left: 4px solid #0c5460;
+}
+
+.student-item.girl {
+    background-color: #f8d7da;
+    border-left: 4px solid #721c24;
+}
+
+/* Results section */
+#results {
+    margin-top: 0;
+    flex-grow: 1;
+}
+
+.random-student {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.random-student h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.group {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.group h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.group p {
+    margin: 8px 0;
+}
+
+/* Elimination results */
+.elimination-results {
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+}
+
+.elimination-results h3 {
+    margin-top: 0;
+    color: #856404;
+    margin-bottom: 15px;
+}
+
+.eliminated-students-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.eliminated-student {
+    padding: 8px 12px;
+    background-color: #ffe8a1;
+    border-radius: 4px;
+    font-size: 14px;
+    border-left: 4px solid #856404;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .left-column, .right-column {
+        width: 100%;
+    }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Selector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Student Selector</h1>
+
+    <div class="left-column">
+        <div class="student-list">
+            <h3>Current Student List</h3>
+            <div id="currentStudents"></div>
+        </div>
+
+        <div id="results"></div>
+        
+        <div id="eliminationResults" class="elimination-results">
+            <h3>Eliminated Students</h3>
+            <div id="eliminatedStudents" class="eliminated-students-list"></div>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <div class="class-selector">
+            <label for="classSelect">Select Class:</label>
+            <select id="classSelect"></select>
+        </div>
+
+        <div class="controls">
+            <button id="selectRandomStudent">Select Random Student</button>
+            
+            <button id="selectRandomStudentElimination">Select Random Student (Elimination Mode)</button>
+            
+            <div class="group-controls">
+                <label for="groupSize">Group Size:</label>
+                <input type="number" id="groupSize" value="4" min="1" max="16">
+                <button id="createGroups">Create Groups</button>
+            </div>
+            
+            <button id="resetEliminationList">Reset Elimination List</button>
+            <button id="resetGroups">Reset Groups</button>
+        </div>
+    </div>
+
+    <!-- Load class data files -->
+    <script src="classes/class-list.js"></script>
+    <script src="classes/d-period.js"></script>
+    <script src="classes/c-period.js"></script>
+    <script src="classes/e-period.js"></script>
+    <script src="classes/f-period.js"></script>
+    
+    <!-- Load main script -->
+    <script src="script.js"></script>
+</body>
+</html>
