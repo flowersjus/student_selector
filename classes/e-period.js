@@ -1,15 +1,11 @@
 const ePeriod = [
-    { name: "Quinn", gender: "G" },
-    { name: "Coop", gender: "B" },
-    { name: "Drue", gender: "G" },
-    { name: "Charles", gender: "B" },
-    { name: "Lilly", gender: "G" },
-    { name: "Clayton", gender: "B" },
-    { name: "Avonlea", gender: "G" },
-    { name: "Anthony", gender: "B" },
-    { name: "Eden", gender: "G" },
-    { name: "Thomas", gender: "B" },
-    { name: "Finn", gender: "B" },
-    { name: "Ella", gender: "G" },
-    { name: "Holdyn", gender: "B" }
+    { name: "Demo Student 1", gender: "B" },
+    { name: "Demo Student 2", gender: "G" },
+    { name: "Demo Student 3", gender: "B" },
+    { name: "Demo Student 4", gender: "G" },
+    { name: "Demo Student 5", gender: "B" },
+    { name: "Demo Student 6", gender: "G" },
+    { name: "Demo Student 7", gender: "B" },
+    { name: "Demo Student 8", gender: "G" },
+    { name: "Demo Student 9", gender: "B" }
 ];

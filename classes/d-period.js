@@ -1,15 +1,12 @@
 const dPeriod = [
-    { name: "Reagan", gender: "G" },
-    { name: "Scott", gender: "B" },
-    { name: "Andrew", gender: "B" },
-    { name: "Graham", gender: "B" },
-    { name: "Sam", gender: "B" },
-    { name: "Jaedon", gender: "B" },
-    { name: "Audrey", gender: "G" },
-    { name: "Yohannes", gender: "B" },
-    { name: "Colin", gender: "B" },
-    { name: "Will", gender: "B" },
-    { name: "Anna Kate", gender: "G" },
-    { name: "Hattie Beth", gender: "G" },
-    { name: "Ace", gender: "B" }
+    { name: "Mock Student 1", gender: "G" },
+    { name: "Mock Student 2", gender: "B" },
+    { name: "Mock Student 3", gender: "G" },
+    { name: "Mock Student 4", gender: "B" },
+    { name: "Mock Student 5", gender: "G" },
+    { name: "Mock Student 6", gender: "B" },
+    { name: "Mock Student 7", gender: "G" },
+    { name: "Mock Student 8", gender: "B" },
+    { name: "Mock Student 9", gender: "G" },
+    { name: "Mock Student 10", gender: "B" }
 ];
