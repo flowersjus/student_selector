@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Classes - Student Selector</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Edit Classes</h1>
+    
+    <div class="edit-container">
+        <div class="class-editor">
+            <h3>Manage Classes</h3>
+            
+            <div class="class-list-editor" id="classListEditor">
+                <!-- Class items will be added here dynamically -->
+            </div>
+            
+            <button id="addClassButton" class="add-button">Add New Class</button>
+            
+            <div class="student-editor">
+                <h3>Edit Students</h3>
+                
+                <div class="class-selector">
+                    <label for="editClassSelect">Select Class to Edit:</label>
+                    <select id="editClassSelect"></select>
+                </div>
+                
+                <div id="studentListEditor">
+                    <!-- Student items will be added here dynamically -->
+                </div>
+                
+                <button id="addStudentButton" class="add-button">Add New Student</button>
+            </div>
+            
+            <button id="saveChangesButton" class="save-button">Save All Changes</button>
+        </div>
+    </div>
+    
+    <!-- Load edit script -->
+    <script src="edit.js"></script>
+</body>
+</html>

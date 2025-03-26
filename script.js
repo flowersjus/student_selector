@@ -4,10 +4,17 @@ let eliminatedStudents = []; // Track eliminated students
 
 // Initialize the application when the DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+    // Initialize localStorage with default classes if not already set
+    initializeLocalStorage();
+    
+    // Add tab navigation
+    setupTabNavigation();
+    
     // Populate the class dropdown
     populateClassDropdown();
     
     // Set default class (first one in the list)
+    const classList = getClassListFromStorage();
     if (classList && classList.length > 0) {
         loadClass(classList[0].id);
     }
@@ -25,12 +32,109 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("resetGroups").addEventListener("click", resetGroups);
 });
 
+// Setup tab navigation
+function setupTabNavigation() {
+    const tabsContainer = document.createElement("div");
+    tabsContainer.className = "tabs-container";
+    
+    const studentSelectorTab = document.createElement("a");
+    studentSelectorTab.href = "index.html";
+    studentSelectorTab.className = "tab active";
+    studentSelectorTab.textContent = "Student Selector";
+    
+    const editClassesTab = document.createElement("a");
+    editClassesTab.href = "edit.html";
+    editClassesTab.className = "tab";
+    editClassesTab.textContent = "Edit Classes";
+    
+    tabsContainer.appendChild(studentSelectorTab);
+    tabsContainer.appendChild(editClassesTab);
+    
+    // Insert tabs at the top of the page, after the h1
+    const h1 = document.querySelector("h1");
+    h1.parentNode.insertBefore(tabsContainer, h1.nextSibling);
+}
+
+// Initialize localStorage with default classes if not already set
+function initializeLocalStorage() {
+    // Check if classes already exist in localStorage
+    if (!localStorage.getItem("classList")) {
+        // Default class list
+        const defaultClassList = [
+            { id: "cPeriod", name: "C Period" },
+            { id: "dPeriod", name: "D Period" },
+            { id: "ePeriod", name: "E Period" },
+            { id: "fPeriod", name: "F Period" }
+        ];
+        
+        // Save to localStorage
+        localStorage.setItem("classList", JSON.stringify(defaultClassList));
+        
+        // Default student data for each class
+        const cPeriod = [
+            { name: "Test Student A", gender: "G" },
+            { name: "Test Student B", gender: "B" },
+            { name: "Test Student C", gender: "G" },
+            { name: "Test Student D", gender: "B" },
+            { name: "Test Student E", gender: "G" },
+            { name: "Test Student F", gender: "B" },
+            { name: "Test Student G", gender: "G" },
+            { name: "Test Student H", gender: "B" }
+        ];
+        
+        const dPeriod = [
+            { name: "Student 1", gender: "G" },
+            { name: "Student 2", gender: "B" },
+            { name: "Student 3", gender: "G" },
+            { name: "Student 4", gender: "B" },
+            { name: "Student 5", gender: "G" },
+            { name: "Student 6", gender: "B" }
+        ];
+        
+        const ePeriod = [
+            { name: "Student A", gender: "G" },
+            { name: "Student B", gender: "B" },
+            { name: "Student C", gender: "G" },
+            { name: "Student D", gender: "B" }
+        ];
+        
+        const fPeriod = [
+            { name: "Student Alpha", gender: "G" },
+            { name: "Student Beta", gender: "B" },
+            { name: "Student Gamma", gender: "G" },
+            { name: "Student Delta", gender: "B" },
+            { name: "Student Epsilon", gender: "G" }
+        ];
+        
+        // Save each class to localStorage
+        localStorage.setItem("cPeriod", JSON.stringify(cPeriod));
+        localStorage.setItem("dPeriod", JSON.stringify(dPeriod));
+        localStorage.setItem("ePeriod", JSON.stringify(ePeriod));
+        localStorage.setItem("fPeriod", JSON.stringify(fPeriod));
+    }
+}
+
+// Get class list from localStorage
+function getClassListFromStorage() {
+    const classListJson = localStorage.getItem("classList");
+    return classListJson ? JSON.parse(classListJson) : [];
+}
+
+// Get students for a specific class from localStorage
+function getStudentsForClass(classId) {
+    const studentsJson = localStorage.getItem(classId);
+    return studentsJson ? JSON.parse(studentsJson) : [];
+}
+
 // Populate the class dropdown with available classes
 function populateClassDropdown() {
     const classSelect = document.getElementById("classSelect");
     
     // Clear existing options
     classSelect.innerHTML = "";
+    
+    // Get classes from localStorage
+    const classList = getClassListFromStorage();
     
     // Add options for each class
     classList.forEach(classInfo => {
@@ -43,6 +147,9 @@ function populateClassDropdown() {
 
 // Load a specific class by ID
 function loadClass(classId) {
+    // Get the class list from localStorage
+    const classList = getClassListFromStorage();
+    
     // Find the class in the list
     const classInfo = classList.find(c => c.id === classId);
     
@@ -51,24 +158,8 @@ function loadClass(classId) {
         return;
     }
     
-    // Set the current students based on the class ID
-    switch (classId) {
-        case "dPeriod":
-            currentStudents = [...dPeriod];
-            break;
-        case "cPeriod":
-            currentStudents = [...cPeriod];
-            break;
-        case "ePeriod":
-            currentStudents = [...ePeriod];
-            break;
-        case "fPeriod":
-            currentStudents = [...fPeriod];
-            break;
-        default:
-            console.error(`Unknown class ID: ${classId}`);
-            return;
-    }
+    // Get students for this class from localStorage
+    currentStudents = getStudentsForClass(classId);
     
     // Update the display
     displayCurrentStudents();
