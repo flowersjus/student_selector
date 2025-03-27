@@ -197,24 +197,72 @@ function displayCurrentStudents() {
     });
 }
 
-// Select a random student
+// Select a random student with animation
 function selectRandomStudent() {
     if (currentStudents.length === 0) {
         alert("No students available in the current class");
         return;
     }
+
+    // Clear previous results
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = `
+        <div class="random-student">
+            <h3>Random Student Selected:</h3>
+            <p class="flipping"></p>
+        </div>
+    `;
+
+    const nameElement = resultsDiv.querySelector('p');
+    const finalStudent = currentStudents[Math.floor(Math.random() * currentStudents.length)];
     
-    const randomStudent = currentStudents[Math.floor(Math.random() * currentStudents.length)];
-    displayRandomStudent(randomStudent);
+    // Animation parameters
+    const totalDuration = 3000; // 3 seconds total
+    const fastDuration = 2000; // First 2 seconds fast flipping
+    const intervalStart = 100; // Start with 100ms between changes
+    const intervalEnd = 300; // End with 300ms between changes
+    
+    let elapsed = 0;
+    let currentInterval = intervalStart;
+    
+    function animateSelection() {
+        if (elapsed >= totalDuration) {
+            // Final selection
+            nameElement.textContent = finalStudent.name;
+            nameElement.classList.remove('flipping');
+            nameElement.classList.add('final-selection');
+            return;
+        }
+        
+        // Show random name during animation
+        const randomStudent = currentStudents[Math.floor(Math.random() * currentStudents.length)];
+        nameElement.textContent = randomStudent.name;
+        
+        // Schedule next frame
+        setTimeout(() => {
+            elapsed += currentInterval;
+            
+            // Gradually slow down
+            if (elapsed < fastDuration) {
+                currentInterval = intervalStart + 
+                    (intervalEnd - intervalStart) * (elapsed / fastDuration);
+            }
+            
+            animateSelection();
+        }, currentInterval);
+    }
+    
+    // Start animation
+    animateSelection();
 }
 
-// Display a randomly selected student
+// Display a randomly selected student (without animation)
 function displayRandomStudent(student) {
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = `
         <div class="random-student">
             <h3>Random Student Selected:</h3>
-            <p>${student.name}</p>
+            <p class="final-selection">${student.name}</p>
         </div>
     `;
 }
