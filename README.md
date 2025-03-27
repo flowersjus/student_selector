@@ -49,12 +49,6 @@ git clone https://github.com/flowersjus/student_selector.git
 
 Contributions are welcome! If you'd like to improve Student Selector:
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
-
 ## Future Enhancements
 
 - Save multiple class rosters
