@@ -12,7 +12,7 @@ Student Selector is a tool designed to help teachers randomly choose students fo
 
 - **Random Student Selection**: Quickly select students at random
 - **Interactive Selection Wheel**: Visually engaging spinning wheel powered by Winwheel.js
-- **Customizable Wheel Options**: Modify the appearance and behavior of the selection wheel
+- **Customizable Wheel Options**: Modify the appearance and behavior of the selection wheel (Using Winwheel.js)
 - **Class Management**: Create and edit class lists
 - **User-Friendly Interface**: Simple, intuitive design for easy classroom use
 - **Customizable Options**: Adapt the tool to fit your specific classroom needs
@@ -67,11 +67,9 @@ Contributions are welcome! If you'd like to improve Student Selector:
 
 ## Future Enhancements
 
-- Save multiple class rosters
 - Export/import functionality
-- Selection history tracking
 - Additional randomization options
-- More wheel customization features
+- UI wheel customization features
 - Improved Firefox browser compatibility
 
 ## License
