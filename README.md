@@ -19,6 +19,10 @@ Student Selector is a tool designed to help teachers randomly choose students fo
 
 ![Selection Wheel](images/wheel.png)
 
+## Browser Compatibility
+
+This application works best in Chrome, Safari, and Edge browsers. Some features may not work properly in Firefox-based browsers.
+
 ## Installation
 
 No installation required! This is a web-based application that runs directly in your browser.
@@ -66,6 +70,7 @@ Contributions are welcome! If you'd like to improve Student Selector:
 - Selection history tracking
 - Additional randomization options
 - More wheel customization features
+- Improved Firefox browser compatibility
 
 ## License
 
