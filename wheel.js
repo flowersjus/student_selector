@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load saved wheel options if available
     loadWheelOptions();
     
+    // Set canvas dimensions
+    resizeCanvas();
+    
     // Initialize the wheel
     createWheel();
     
@@ -17,7 +20,35 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("updateWheel").addEventListener("click", updateWheelFromInput);
     document.getElementById("spinWheel").addEventListener("click", startSpin);
     document.getElementById("resetWheel").addEventListener("click", resetWheel);
+    
+    // Add resize listener
+    window.addEventListener("resize", debounce(() => {
+        resizeCanvas();
+        createWheel();
+    }, 250));
 });
+
+// Debounce function to limit resize events
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(func, wait);
+    };
+}
+
+// Set canvas dimensions based on container
+function resizeCanvas() {
+    const container = document.querySelector('.wheel-indicator-container');
+    const canvas = document.getElementById('wheelCanvas');
+    
+    // Get container dimensions accounting for padding (15px on each side)
+    const containerWidth = container.clientWidth - 30; // Subtract padding (15px * 2)
+    
+    // Set canvas dimensions to match container (maintain square aspect)
+    canvas.width = containerWidth;
+    canvas.height = containerWidth;
+}
 
 // Setup tab navigation
 function setupTabNavigation() {
@@ -64,6 +95,13 @@ function loadWheelOptions() {
     }
 }
 
+// Helper function to truncate text with ellipsis if needed
+function truncateText(text, maxLength) {
+    // Ensure minimum length of 8 characters
+    maxLength = Math.max(maxLength || 15, 8);
+    return text.length > maxLength ? text.substring(0, maxLength-3) + '...' : text;
+}
+
 // Create the wheel with current options
 function createWheel() {
     // Create segments array for the wheel
@@ -72,22 +110,38 @@ function createWheel() {
     // Define 5 distinct colors for the wheel segments
     const colors = ['#4CAF50', '#007bff', '#ff9800', '#9c27b0', '#f44336'];
     
+    // Get canvas dimensions
+    const canvas = document.getElementById('wheelCanvas');
+    const wheelSize = canvas.width;
+    
+    // Calculate dynamic font size (3.5% of wheel diameter, min 12px, max 24px)
+    const fontSize = Math.max(12, Math.min(24, Math.floor(wheelSize * 0.035)));
+    
+    // Calculate text margin based on font size
+    const textMargin = Math.floor(fontSize * 0.7);
+    
+    // Calculate max text length based on wheel size and number of segments
+    // More segments = less space per segment = shorter text
+    const segmentFactor = Math.max(1, wheelOptions.length / 6); // More aggressive segment factor
+    const maxTextLength = Math.floor((wheelSize * 0.05) / (segmentFactor * (fontSize / 14)));
+    
     // Add a segment for each option with cycling colors
     wheelOptions.forEach((option, index) => {
         segments.push({
-            'text': option,
-            'fillStyle': colors[index % colors.length]
+            'text': truncateText(option, maxTextLength),
+            'fillStyle': colors[index % colors.length],
+            // Store original text in case needed later
+            'fullText': option
         });
     });
-    
-    // Create the wheel
+
     theWheel = new Winwheel({
         'canvasId': 'wheelCanvas',
         'numSegments': segments.length,
         'segments': segments,
-        'outerRadius': 180,
-        'textFontSize': 16,
-        'textMargin': 10,
+        'responsive': true,
+        'textFontSize': fontSize, // Dynamic font size
+        'textMargin': textMargin, // Dynamic margin
         'animation': {
             'type': 'spinToStop',
             'duration': 5,
@@ -150,12 +204,12 @@ function resetWheel() {
 // Callback function for when the wheel stops
 function alertPrize(indicatedSegment) {
     if (indicatedSegment) {
-        const selectedOption = indicatedSegment.text;
+        const selectedOption = indicatedSegment.fullText || indicatedSegment.text;
         const shouldRemove = confirm(`Selected: ${selectedOption}\n\nRemove this option from wheel?`);
         
         if (shouldRemove) {
-            // Remove the selected option
-            wheelOptions = wheelOptions.filter(opt => opt !== selectedOption);
+            // Remove the selected option using full text if available
+            wheelOptions = wheelOptions.filter(opt => opt !== (indicatedSegment.fullText || indicatedSegment.text));
             localStorage.setItem("wheelOptions", JSON.stringify(wheelOptions));
             document.getElementById("wheelOptions").value = wheelOptions.join("\n");
             createWheel();
@@ -164,7 +218,7 @@ function alertPrize(indicatedSegment) {
         document.getElementById("wheelResult").innerHTML = `
             <div class="random-student">
                 <h3>Selected Option:</h3>
-                <p>${selectedOption}</p>
+                <p>${indicatedSegment.fullText || indicatedSegment.text}</p>
             </div>
         `;
     }

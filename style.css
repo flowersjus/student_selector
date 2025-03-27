@@ -298,9 +298,24 @@ button:hover {
 
 .wheel-indicator-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 600px;
+    min-width: 300px;
+    aspect-ratio: 1/1;
     margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.left-column {
+    flex: 1 1 60%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .wheel-indicator {
@@ -346,13 +361,32 @@ button:hover {
 #wheelCanvas {
     display: block;
     margin: 0 auto;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    background-color: transparent;
+    border: none;
 }
 
 #wheelResult {
-    margin-top: 20px;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#wheelResult .random-student {
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+#wheelResult .random-student h3 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 #spinWheel {
