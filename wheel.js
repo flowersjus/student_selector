@@ -150,10 +150,21 @@ function resetWheel() {
 // Callback function for when the wheel stops
 function alertPrize(indicatedSegment) {
     if (indicatedSegment) {
+        const selectedOption = indicatedSegment.text;
+        const shouldRemove = confirm(`Selected: ${selectedOption}\n\nRemove this option from wheel?`);
+        
+        if (shouldRemove) {
+            // Remove the selected option
+            wheelOptions = wheelOptions.filter(opt => opt !== selectedOption);
+            localStorage.setItem("wheelOptions", JSON.stringify(wheelOptions));
+            document.getElementById("wheelOptions").value = wheelOptions.join("\n");
+            createWheel();
+        }
+
         document.getElementById("wheelResult").innerHTML = `
             <div class="random-student">
                 <h3>Selected Option:</h3>
-                <p>${indicatedSegment.text}</p>
+                <p>${selectedOption}</p>
             </div>
         `;
     }
