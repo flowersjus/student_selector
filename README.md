@@ -4,23 +4,26 @@ A simple web application for randomly selecting students in a classroom setting.
 
 ## Overview
 
-<div style="text-align:center">
-  <img src="images/student_selector_app.png" alt="Student Selector Application">
-</div>
-
 Student Selector is a tool designed to help teachers randomly choose students for classroom participation, group assignments, or other educational activities. This application streamlines the selection process, ensuring fair and unbiased student participation.
+
+![Application Interface](images/index.png)
 
 ## Features
 
 - **Random Student Selection**: Quickly select students at random
+- **Interactive Selection Wheel**: Visually engaging spinning wheel powered by Winwheel.js
+- **Customizable Wheel Options**: Modify the appearance and behavior of the selection wheel
 - **Class Management**: Create and edit class lists
 - **User-Friendly Interface**: Simple, intuitive design for easy classroom use
 - **Customizable Options**: Adapt the tool to fit your specific classroom needs
 
+![Selection Wheel](images/wheel.png)
 
 ## Installation
 
 No installation required! This is a web-based application that runs directly in your browser.
+
+Visit the live version at: https://flowersjus.github.io/student_selector
 
 To use locally:
 
@@ -35,24 +38,42 @@ git clone https://github.com/flowersjus/student_selector.git
 
 1. Navigate to the main page
 2. Add your class roster using the edit functionality
-3. Click the selection button to randomly choose a student
-4. Use additional features as needed for your classroom activities
+3. Configure the selection wheel with your preferred options
+4. Click the spin button to randomly select a student
+5. The wheel will animate and stop on a randomly selected student
 
 ## Technologies Used
 
 - HTML
 - CSS
 - JavaScript (72.2%)
-
+- Winwheel.js for the interactive selection wheel
 
 ## Contributing
 
 Contributions are welcome! If you'd like to improve Student Selector:
 
-## Future Enhancements
-- Additional randomization options
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
 
+## Future Enhancements
+
+- Save multiple class rosters
+- Export/import functionality
+- Selection history tracking
+- Additional randomization options
+- More wheel customization features
 
 ## License
 
 This project is open source and available for educational use.
+
+## Acknowledgments
+
+- [Winwheel.js](https://github.com/zarocknz/javascript-winwheel) by Douglas McKechie for the spinning wheel functionality
+
+Best wishes,
+Justin Flowers
