@@ -65,5 +65,3 @@ Contributions are welcome! If you'd like to improve Student Selector:
 ## License
 
 This project is open source and available for educational use.
-
-## Contact
