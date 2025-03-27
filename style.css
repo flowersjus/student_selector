@@ -248,6 +248,89 @@ button:hover {
     border-left: 4px solid #856404;
 }
 
+/* Wheel page specific styles */
+.wheel-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.wheel-indicator-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.wheel-indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #ff0000;
+    z-index: 10;
+}
+
+.wheel-options {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.wheel-options h3 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#wheelOptions {
+    width: calc(100% - 20px);
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: sans-serif;
+    margin-bottom: 15px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+#wheelCanvas {
+    display: block;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#wheelResult {
+    margin-top: 20px;
+}
+
+#spinWheel {
+    background-color: #007bff;
+}
+
+#spinWheel:hover {
+    background-color: #0056b3;
+}
+
+#resetWheel {
+    background-color: #dc3545;
+}
+
+#resetWheel:hover {
+    background-color: #bd2130;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {

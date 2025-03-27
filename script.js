@@ -47,8 +47,14 @@ function setupTabNavigation() {
     editClassesTab.className = "tab";
     editClassesTab.textContent = "Edit Classes";
     
+    const wheelSelectorTab = document.createElement("a");
+    wheelSelectorTab.href = "wheel.html";
+    wheelSelectorTab.className = "tab";
+    wheelSelectorTab.textContent = "Wheel Selector";
+    
     tabsContainer.appendChild(studentSelectorTab);
     tabsContainer.appendChild(editClassesTab);
+    tabsContainer.appendChild(wheelSelectorTab);
     
     // Insert tabs at the top of the page, after the h1
     const h1 = document.querySelector("h1");
