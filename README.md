@@ -79,6 +79,3 @@ This project is open source and available for educational use.
 ## Acknowledgments
 
 - [Winwheel.js](https://github.com/zarocknz/javascript-winwheel) by Douglas McKechie for the spinning wheel functionality
-
-Best wishes,
-Justin Flowers
