@@ -58,7 +58,6 @@ Contributions are welcome! If you'd like to improve Student Selector:
 ## Future Enhancements
 
 - Save multiple class rosters
-- Export/import functionality
 - Selection history tracking
 - Additional randomization options
 
