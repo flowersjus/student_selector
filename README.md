@@ -50,9 +50,6 @@ git clone https://github.com/flowersjus/student_selector.git
 Contributions are welcome! If you'd like to improve Student Selector:
 
 ## Future Enhancements
-
-- Save multiple class rosters
-- Selection history tracking
 - Additional randomization options
 
 
