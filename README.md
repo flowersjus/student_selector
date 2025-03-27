@@ -43,8 +43,10 @@ git clone https://github.com/flowersjus/student_selector.git
 1. Navigate to the main page
 2. Add your class roster using the edit functionality
 3. Configure the selection wheel with your preferred options
-4. Click the spin button to randomly select a student
-5. The wheel will animate and stop on a randomly selected student
+4. Click the Select Random Student button to randomly select a student
+5. Navigate to the Wheel Selector page
+6. Edit the options, each option on a new line
+7. The wheel will animate and stop on a randomly selected option
 
 ## Technologies Used
 
